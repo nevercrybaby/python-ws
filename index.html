@@ -1,722 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Gold Tracker Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Padauk', 'sans-serif'],
+                        num: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Padauk', sans-serif;
+            background-color: #0f172a;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 20%);
+            color: #F9FAFB;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .font-num { font-family: 'Inter', sans-serif; }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
+        .input-field {
+            background-color: #334155;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
             transition: all 0.3s ease;
         }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
+        .input-field:focus {
+            background-color: #1e293b;
+            border-color: #FBBF24;
+            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
+            outline: none;
         }
 
-        .social-links {
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0f172a;
+            z-index: 9999;
             display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        .loader-ring {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
+            border: 4px solid transparent;
+            border-top-color: #FBBF24;
+            animation: spin 1s linear infinite;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 10px; }
 
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
-        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<body class="antialiased pb-12 overflow-x-hidden" onload="initApp()">
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="relative">
+            <div class="loader-ring"></div>
+            <i class="fas fa-gem absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-yellow-500 text-xl"></i>
         </div>
-    </section>
+        <div class="mt-4 text-yellow-500 font-bold tracking-widest text-[10px] uppercase">Loading Premium Pro</div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container mx-auto max-w-4xl p-4 md:p-6">
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Header -->
+        <header class="text-center my-8 space-y-2">
+            <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300 drop-shadow-sm">
+                Premium Gold Tracker
+            </h1>
+            <p class="text-sm md:text-base text-gray-400 font-medium">တိကျမြန်ဆန် စိတ်ချရသော Premium Gold Calculator</p>
+        </header>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+        <!-- Main Input Section -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8">
+            
+            <!-- Gold Price Input -->
+            <div class="md:col-span-12 glass-card p-6 rounded-2xl border border-yellow-500/20 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                
+                <label class="block text-center text-yellow-400 font-bold uppercase tracking-wider text-xs mb-3">
+                    ယနေ့ ရွှေပေါက်စျေး (၁ ကျပ်သား)
+                </label>
+                <div class="relative max-w-md mx-auto">
+                    <input type="number" id="goldPrice" class="input-field text-3xl font-bold text-center w-full p-3 rounded-xl font-num text-white shadow-lg" placeholder="0" oninput="calculate()">
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-xs font-num">MMK</span>
+                </div>
+                <div class="flex justify-center gap-4 mt-4 text-[10px] md:text-xs text-gray-400 font-num">
+                    <div class="bg-gray-800/50 px-3 py-1.5 rounded border border-gray-700" id="pricePerPaeDisplay">၁ ပဲ = ၀</div>
+                    <div class="bg-gray-800/50 px-3 py-1.5 rounded border border-gray-700" id="pricePerYwayDisplay">၁ ရွေး = ၀</div>
+                </div>
+            </div>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Weight Input -->
+            <div class="md:col-span-6 glass-card p-6 rounded-2xl border-t-4 border-green-500">
+                <h3 class="text-green-400 font-bold mb-4 flex items-center gap-2 text-sm uppercase">
+                    <i class="fas fa-balance-scale"></i> ရွှေထည် အလေးချိန်
+                </h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="text-center">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ကျပ်</label>
+                        <input type="number" id="prodKyat" class="input-field w-full p-2 text-center rounded-lg font-bold font-num" placeholder="0" oninput="calculate()">
+                    </div>
+                    <div class="text-center">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ပဲ</label>
+                        <input type="number" id="prodPae" class="input-field w-full p-2 text-center rounded-lg font-bold font-num" placeholder="0" oninput="calculate()">
+                    </div>
+                    <div class="text-center">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ရွေး</label>
+                        <input type="number" id="prodYway" class="input-field w-full p-2 text-center rounded-lg font-bold font-num" placeholder="0" oninput="calculate()">
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
-                </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+
+            <!-- Wastage Input -->
+            <div class="md:col-span-6 glass-card p-6 rounded-2xl border-t-4 border-red-500">
+                <h3 class="text-red-400 font-bold mb-4 flex items-center gap-2 text-sm uppercase">
+                    <i class="fas fa-fire-alt"></i> အလျော့တွက် (လက်ခ)
+                </h3>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="text-center opacity-30">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ကျပ်</label>
+                        <div class="input-field w-full p-2 text-center rounded-lg font-bold bg-gray-800">-</div>
+                    </div>
+                    <div class="text-center">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ပဲ</label>
+                        <input type="number" id="alyotPae" class="input-field w-full p-2 text-center rounded-lg font-bold font-num text-red-200" placeholder="0" oninput="calculate()">
+                    </div>
+                    <div class="text-center">
+                        <label class="text-[10px] text-gray-500 mb-1 block">ရွေး</label>
+                        <input type="number" id="alyotYway" class="input-field w-full p-2 text-center rounded-lg font-bold font-num text-red-200" placeholder="0" oninput="calculate()">
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+
+        <!-- Result Display -->
+        <div class="glass-card p-8 rounded-[2rem] shadow-2xl mb-8 border border-yellow-500/20 bg-gradient-to-b from-gray-800 to-gray-900 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-yellow-500/5 blur-2xl"></div>
+            
+            <div class="relative z-10">
+                <p class="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Total Estimated Cost</p>
+                <h2 id="totalCost" class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 font-num tracking-tight mb-2">0</h2>
+                <p class="text-yellow-500 font-bold text-sm">MMK (မြန်မာကျပ်ငွေ)</p>
+                
+                <div class="mt-6 pt-6 border-t border-gray-700/50 flex justify-center items-center gap-2">
+                    <span class="text-gray-500 text-xs">စုစုပေါင်း အလေးချိန်:</span>
+                    <span id="totalWeightDisplay" class="text-white font-bold bg-gray-800/80 px-3 py-1 rounded-full text-xs border border-gray-600">၀ ကျပ် ၀ ပဲ ၀ ရွေး</span>
+                </div>
+                
+                <p id="costTextDisplay" class="mt-4 text-[11px] text-gray-500 font-medium italic min-h-[1rem]"></p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-2 gap-4 mb-10">
+            <button onclick="addToHistory()" class="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-gray-900 font-bold py-4 rounded-xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 uppercase text-xs">
+                <i class="fas fa-save"></i> မှတ်တမ်းတင်မည်
+            </button>
+            <button onclick="resetForm()" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 rounded-xl border border-gray-600 transition-all active:scale-95 flex items-center justify-center gap-2 uppercase text-xs">
+                <i class="fas fa-redo"></i> ရှင်းမည်
+            </button>
+        </div>
+
+        <!-- History & Settings Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- History Section -->
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-4 border-b border-gray-700/50 pb-3">
+                    <h3 class="font-bold text-yellow-400 flex items-center gap-2 text-sm uppercase">
+                        <i class="fas fa-history"></i> မှတ်တမ်းများ
+                    </h3>
+                    <span class="text-[10px] text-gray-500 bg-gray-800 px-2 py-1 rounded font-num" id="recordCount">0 Records</span>
+                </div>
+                <div id="historyListBody" class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="font-bold text-gray-200 mb-4 flex items-center gap-2 border-b border-gray-700/50 pb-3 text-sm uppercase">
+                    <i class="fas fa-cog text-gray-400"></i> Settings & Data
+                </h3>
+                
+                <div class="space-y-4">
+                    <!-- Data Management -->
+                    <div class="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 hover:border-blue-500/30 transition-colors">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400"><i class="fas fa-database text-xs"></i></div>
+                            <div>
+                                <p class="text-[11px] font-bold text-gray-200 uppercase tracking-wider">Data Management</p>
+                                <p class="text-[10px] text-gray-500">Backup & Restore your records</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="exportAllData()" class="bg-blue-600/90 hover:bg-blue-500 text-white text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                            <button onclick="document.getElementById('importFileInput').click()" class="bg-gray-700 hover:bg-gray-600 text-white text-[10px] font-bold py-2 rounded-lg transition-colors border border-gray-600 flex items-center justify-center gap-1">
+                                <i class="fas fa-upload"></i> Import
+                            </button>
+                            <input type="file" id="importFileInput" class="hidden" accept=".json" onchange="importData(event)">
+                        </div>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="bg-red-500/5 p-4 rounded-xl border border-red-900/20 hover:border-red-500/30 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-red-500/10 rounded-lg text-red-400"><i class="fas fa-trash-alt text-xs"></i></div>
+                                <div>
+                                    <p class="text-[11px] font-bold text-gray-200 uppercase tracking-wider">Clear Data</p>
+                                    <p class="text-[10px] text-gray-500">Delete all history records</p>
+                                </div>
+                            </div>
+                            <button onclick="confirmClearHistory()" class="bg-red-500/10 hover:bg-red-500 hover:text-white text-red-400 text-[10px] font-bold px-3 py-2 rounded-lg border border-red-500/30 transition-all uppercase">
+                                Delete All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Confirmation Modal (Delete All) -->
+    <div id="confirmationModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-6">
+        <div class="bg-gray-800 border border-gray-700 p-8 rounded-[2rem] max-w-sm w-full text-center shadow-2xl">
+            <div class="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-exclamation-triangle text-red-500 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">မှတ်တမ်းများ အားလုံးဖျက်မည်?</h3>
+            <p class="text-gray-400 text-sm mb-8 leading-relaxed">မှတ်တမ်းအားလုံးကို ဖျက်ပစ်လိုက်ပါက ပြန်လည်ရယူနိုင်တော့မည် မဟုတ်ပါ။</p>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="closeModal('confirmationModal')" class="bg-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:bg-gray-600 transition-colors">Cancel</button>
+                <button onclick="performClearHistory()" class="bg-red-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-red-500 shadow-lg shadow-red-500/20 transition-colors">Delete All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Item Deletion Modal (The "Alert") -->
+    <div id="itemDeletionModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-6">
+        <div class="bg-gray-800 border border-gray-700 p-8 rounded-[2rem] max-w-sm w-full text-center shadow-2xl">
+            <div class="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-trash-can text-yellow-500 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">မှတ်တမ်း ဖျက်မည်?</h3>
+            <p class="text-gray-400 text-sm mb-8 leading-relaxed">ဤမှတ်တမ်းတစ်ခုတည်းကိုသာ ဖျက်ပစ်ရန် သေချာပါသလား။</p>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="closeModal('itemDeletionModal')" class="bg-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:bg-gray-600 transition-colors">Cancel</button>
+                <button id="confirmItemDeleteBtn" class="bg-yellow-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-yellow-500 shadow-lg shadow-yellow-500/20 transition-colors">ဖျက်မည်</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-8 py-3 rounded-full shadow-2xl border border-yellow-500/30 flex items-center gap-3 transform translate-y-32 transition-transform duration-500 z-[101]">
+        <i class="fas fa-info-circle text-yellow-500" id="toast-icon"></i>
+        <span id="toast-message" class="text-xs font-bold">Action Done</span>
+    </div>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+        // State
+        let history = [];
+        let currentTotalCost = 0;
+        let currentTotalWeightText = "";
+        let currentMarketPrice = 0;
+        let itemToDeleteId = null;
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
+        function initApp() {
+            loadHistory();
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 600);
+            }, 1200);
         }
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+        // Logic
+        function calculate() {
+            const marketPrice = parseFloat(document.getElementById('goldPrice').value) || 0;
+            currentMarketPrice = marketPrice;
+            
+            const pKyat = parseFloat(document.getElementById('prodKyat').value) || 0;
+            const pPae = parseFloat(document.getElementById('prodPae').value) || 0;
+            const pYway = parseFloat(document.getElementById('prodYway').value) || 0;
+            
+            const aPae = parseFloat(document.getElementById('alyotPae').value) || 0;
+            const aYway = parseFloat(document.getElementById('alyotYway').value) || 0;
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
+            const pricePerPae = marketPrice / 16;
+            const pricePerYway = pricePerPae / 8;
+
+            document.getElementById('pricePerPaeDisplay').innerText = `၁ ပဲ = ${Math.round(pricePerPae).toLocaleString()}`;
+            document.getElementById('pricePerYwayDisplay').innerText = `၁ ရွေး = ${Math.round(pricePerYway).toLocaleString()}`;
+
+            const productTotalYway = (pKyat * 128) + (pPae * 8) + pYway;
+            const alyotTotalYway = (aPae * 8) + aYway;
+            const grandTotalYway = productTotalYway + alyotTotalYway;
+
+            const dKyat = Math.floor(grandTotalYway / 128);
+            const rem1 = grandTotalYway % 128;
+            const dPae = Math.floor(rem1 / 8);
+            let dYway = parseFloat((rem1 % 8).toFixed(2));
+            if(dYway % 1 === 0) dYway = Math.floor(dYway);
+
+            currentTotalWeightText = `${dKyat} ကျပ် ${dPae} ပဲ ${dYway} ရွေး`;
+            document.getElementById('totalWeightDisplay').innerText = currentTotalWeightText;
+
+            currentTotalCost = Math.round(grandTotalYway * pricePerYway);
+            document.getElementById('totalCost').innerText = currentTotalCost.toLocaleString('en-US');
+            document.getElementById('costTextDisplay').innerText = currentTotalCost > 0 ? convertToBurmeseSpokenText(currentTotalCost) : "";
+        }
+
+        function toBurmeseNum(num) {
+            const digits = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉'];
+            return num.toString().split('').map(c => /\d/.test(c) ? digits[parseInt(c)] : c).join('');
+        }
+
+        function convertToBurmeseSpokenText(amount) {
+            if (amount === 0) return "";
+            const lakhs = Math.floor(amount / 100000);
+            const remainder = amount % 100000;
+            let text = lakhs > 0 ? toBurmeseNum(lakhs) + " သိန်း" : "";
+            if (lakhs > 0 && remainder > 0) text += "၊ ";
+            if (remainder > 0) {
+                const remStr = remainder.toString();
+                const len = remStr.length;
+                for (let i = 0; i < len; i++) {
+                    const digit = parseInt(remStr[i]);
+                    const pos = len - 1 - i;
+                    if (digit !== 0) {
+                        text += toBurmeseNum(digit);
+                        if (pos === 4) text += " သောင်း";
+                        else if (pos === 3) text += " ထောင်";
+                        else if (pos === 2) text += " ရာ";
+                        else if (pos === 1) text += " ဆယ်";
+                        text += " ";
+                    }
                 }
+            }
+            return text + " ကျပ်";
+        }
+
+        function resetForm() {
+            ['goldPrice', 'prodKyat', 'prodPae', 'prodYway', 'alyotPae', 'alyotYway'].forEach(id => {
+                document.getElementById(id).value = '';
             });
-        });
+            calculate();
+        }
+
+        // History Management
+        function loadHistory() {
+            const saved = localStorage.getItem('premium_gold_v3_data');
+            if (saved) {
+                history = JSON.parse(saved);
+                renderHistory();
+            }
+        }
+
+        function saveHistoryLocally() {
+            localStorage.setItem('premium_gold_v3_data', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function addToHistory() {
+            if (currentTotalCost === 0) {
+                showToast("တွက်ချက်ရန် တန်ဖိုးများ ထည့်သွင်းပါ", true);
+                return;
+            }
+
+            const now = new Date();
+            const newItem = {
+                id: Date.now(),
+                date: now.toLocaleDateString('en-GB'),
+                time: now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}),
+                weight: currentTotalWeightText,
+                cost: currentTotalCost,
+                marketPrice: currentMarketPrice,
+                formattedCost: currentTotalCost.toLocaleString('en-US'),
+                costText: convertToBurmeseSpokenText(currentTotalCost) // Added Burmese Text
+            };
+
+            history.unshift(newItem);
+            saveHistoryLocally();
+            showToast("မှတ်တမ်း သိမ်းဆည်းပြီး");
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyListBody');
+            document.getElementById('recordCount').innerText = `${history.length} Records`;
+            
+            if (history.length === 0) {
+                list.innerHTML = `<div class="text-center text-gray-500 py-12 text-xs opacity-50 uppercase tracking-widest">No History Saved</div>`;
+                return;
+            }
+
+            list.innerHTML = history.map(item => `
+                <div class="bg-gray-800/40 border border-white/5 rounded-2xl p-4 group hover:bg-gray-800/80 transition-all hover:border-yellow-500/20 shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[9px] text-gray-400 font-num tracking-wider bg-gray-900 px-2 py-0.5 rounded">${item.date} • ${item.time}</span>
+                        </div>
+                        <button onclick="confirmDeleteItem(${item.id})" class="text-gray-600 hover:text-red-400 p-1 transition-colors">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-gray-900/40 p-2 rounded-xl border border-white/5">
+                                <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">အလေးချိန်</p>
+                                <p class="text-gray-200 font-bold text-xs truncate">${item.weight}</p>
+                            </div>
+                            <div class="bg-gray-900/40 p-2 rounded-xl border border-white/5">
+                                <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">စျေးနှုန်း (၁ ကျပ်)</p>
+                                <p class="text-gray-400 font-bold text-xs font-num">${item.marketPrice.toLocaleString()} MMK</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center pt-2 border-t border-gray-700/50">
+                            <p class="text-[10px] text-yellow-500/70 uppercase font-bold tracking-widest">Grand Total</p>
+                            <div class="text-right">
+                                <p class="text-xl font-black text-yellow-500 font-num tracking-tight">${item.formattedCost} <span class="text-[10px]">MMK</span></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Added Burmese Spoken Text Display -->
+                        <div class="bg-yellow-500/5 border border-yellow-500/10 p-2 rounded-lg text-center">
+                            <p class="text-[10px] text-yellow-500/80 font-medium leading-relaxed">(${item.costText || convertToBurmeseSpokenText(item.cost)})</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Confirmation & Deletion
+        function confirmDeleteItem(id) {
+            itemToDeleteId = id;
+            document.getElementById('itemDeletionModal').classList.remove('hidden');
+        }
+
+        document.getElementById('confirmItemDeleteBtn').onclick = function() {
+            if (itemToDeleteId) {
+                history = history.filter(h => h.id !== itemToDeleteId);
+                saveHistoryLocally();
+                closeModal('itemDeletionModal');
+                showToast("မှတ်တမ်းကို ဖျက်ပြီးပါပြီ");
+                itemToDeleteId = null;
+            }
+        };
+
+        function confirmClearHistory() {
+            if(history.length > 0) document.getElementById('confirmationModal').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function performClearHistory() {
+            history = [];
+            saveHistoryLocally();
+            closeModal('confirmationModal');
+            showToast("မှတ်တမ်းများအားလုံး ဖျက်ပြီးပါပြီ");
+        }
+
+        // Settings Logic
+        function exportAllData() {
+            if(history.length === 0) return showToast("Data မရှိပါ", true);
+            const dataStr = JSON.stringify(history, null, 2);
+            const blob = new Blob([dataStr], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `GoldTracker_Backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            showToast("Backup file ဒေါင်းလုတ်လုပ်ပြီး");
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (Array.isArray(data)) {
+                        history = data;
+                        saveHistoryLocally();
+                        showToast("Data ပြန်လည် ထည့်သွင်းပြီး");
+                    }
+                } catch (err) { showToast("ဖိုင်ပုံစံ မှားယွင်းနေပါသည်", true); }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            
+            if(isError) {
+                toast.classList.add('border-red-500/30');
+                document.getElementById('toast-icon').className = "fas fa-exclamation-circle text-red-500";
+            } else {
+                toast.classList.remove('border-red-500/30');
+                document.getElementById('toast-icon').className = "fas fa-check-circle text-green-500";
+            }
+
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => toast.classList.add('translate-y-32'), 3000);
+        }
     </script>
 </body>
-
 </html>
